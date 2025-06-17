@@ -116,7 +116,7 @@ def perform_analysis(wallet_address, localS):
             localS.setItem("analysis_result", result_to_save)
             st.session_state.analysis_result = result_to_save
             
-            st.rerun()
+            # st.rerun()
 
         except Exception as e:
             st.error(f"Ha ocurrido un error durante el proceso: {e}", icon="🚨")
