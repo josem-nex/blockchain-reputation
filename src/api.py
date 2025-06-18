@@ -2,9 +2,8 @@
 from fastapi import FastAPI, HTTPException, Depends, Query
 from pydantic import BaseModel, Field
 from web3 import Web3
-from typing import Dict, Any
 from src import analysis, blockchain_utils
-from src.config import METRIC_KEYS_ORDER,OWNER_ADDRESS_ENV, OWNER_PRIVATE_KEY
+from src.config import OWNER_PRIVATE_KEY
 
 class WalletRequest(BaseModel):
     """El JSON que el cliente debe enviar en su petición."""
@@ -45,7 +44,8 @@ api_app = FastAPI(
 # estado compartido para la conexión a la blockchain
 SHARED_STATE = {
     "w3": None,
-    "contract": None
+    "contract": None,
+    "owner_address": None
 }
 
 def get_shared_state():
@@ -84,11 +84,10 @@ def analyze_wallet(
 
     try:
         # Preparamos las credenciales del owner
-        owner_address = None
+        owner_address = SHARED_STATE.get("owner_address")
         owner_pk = None
         
-        if OWNER_ADDRESS_ENV and OWNER_PRIVATE_KEY:
-            owner_address = OWNER_ADDRESS_ENV
+        if owner_address and OWNER_PRIVATE_KEY:
             owner_pk = OWNER_PRIVATE_KEY
         else:
             raise HTTPException(

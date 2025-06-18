@@ -37,6 +37,7 @@ def display_config_tab(localS):
             st.session_state.contract = None
             SHARED_STATE["w3"] = None
             SHARED_STATE["contract"] = None
+            SHARED_STATE["owner_address"] = None
             return
 
         contract = blockchain_utils.get_contract_instance(w3, contract_address)
@@ -46,12 +47,14 @@ def display_config_tab(localS):
             st.session_state.contract = None
             SHARED_STATE["w3"] = None
             SHARED_STATE["contract"] = None
+            SHARED_STATE["owner_address"] = None
             return
 
         st.session_state.w3 = w3
         st.session_state.contract = contract
         SHARED_STATE["w3"] = w3
         SHARED_STATE["contract"] = contract
+        SHARED_STATE["owner_address"] = owner_address
         
         
         new_config = {
