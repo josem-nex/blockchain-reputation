@@ -9,10 +9,10 @@ from web3 import Web3
 # Edita estos valores para adaptar el script a tu entorno.
 
 # URL del nodo RPC de la blockchain 
-RPC_URL = 'http://127.0.0.1:8545/'
+RPC_URL = 'http://127.0.0.1:7545/'
 
 # Reemplaza con tu dirección de desplegador
-ADDRESS = '0x98D08079928FcCB30598c6C6382ABfd7dbFaA1cD'  
+ADDRESS = '0xE962e854F94f2212735F6ad2a0c800DBdd9cF016'  
 
 # Ruta al archivo JSON del contrato compilado.
 try:

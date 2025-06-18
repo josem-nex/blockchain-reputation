@@ -41,7 +41,7 @@ def main():
         
         config = st.session_state.app_config
         if config.get("rpc_url") and config.get("contract_address"):
-            w3 = blockchain_utils.connect_to_node(config["rpc_url"], config["port"])
+            w3 = blockchain_utils.connect_to_node(config["rpc_url"])
             if w3:
                 contract = blockchain_utils.get_contract_instance(w3, config["contract_address"])
                 if contract:

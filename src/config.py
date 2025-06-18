@@ -19,9 +19,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONTRACT_JSON_PATH = os.path.join(BASE_DIR, 'contracts', 'walletDataCache.sol', 'WalletDataCache.json')
 
 # ! --- Variables de Entorno ---
-OWNER_ADDRESS_ENV = os.getenv("OWNER_ADDRESS", "")
+# OWNER_ADDRESS_ENV = os.getenv("OWNER_ADDRESS", "")
 OWNER_PRIVATE_KEY = os.getenv("OWNER_PRIVATE_KEY")
-CONTRACT_ADDRESS_ENV = os.getenv("CONTRACT_ADDRESS", "")
+# CONTRACT_ADDRESS_ENV = os.getenv("CONTRACT_ADDRESS", "")
 
 
 def load_contract_abi():

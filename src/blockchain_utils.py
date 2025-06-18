@@ -3,11 +3,10 @@ from web3 import Web3
 import streamlit as st 
 from src.config import METRIC_KEYS_ORDER, CONTRACT_ABI
 
-def connect_to_node(rpc_url: str, port: int):
+def connect_to_node(rpc_url):
     """Intenta conectar a un nodo Ethereum y devuelve una instancia de Web3."""
-    full_rpc_url = f"{rpc_url}:{port}"
     try:
-        w3 = Web3(Web3.HTTPProvider(full_rpc_url))
+        w3 = Web3(Web3.HTTPProvider(rpc_url))
         if w3.is_connected():
             return w3
     except Exception:

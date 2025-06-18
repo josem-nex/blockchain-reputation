@@ -133,19 +133,23 @@ def run_full_analysis_and_update(
     else:
         final_metrics = {key: 0 for key in METRIC_KEYS_ORDER}
 
-    # analizar nuevos bloques
-    end_block = w3.eth.block_number
-    if start_block <= end_block:
-        new_metrics = process_blocks(w3, wallet_address, start_block, end_block)
-        if new_metrics:
-            for key in METRIC_KEYS_ORDER:
-                if key == "firstTxTimestamp": continue
-                final_metrics[key] += new_metrics.get(key, 0)
-    
     #  obtener timestamp de primera tx si es necesario
     if final_metrics.get("firstTxTimestamp", 0) == 0:
         _, first_ts = get_first_tx_timestamp(w3, wallet_address)
         final_metrics["firstTxTimestamp"] = first_ts
+    
+    if final_metrics["firstTxTimestamp"] == 0:
+        return final_metrics, last_block
+    else:
+        # analizar nuevos bloques
+        end_block = w3.eth.block_number
+        if start_block <= end_block:
+            new_metrics = process_blocks(w3, wallet_address, start_block, end_block)
+            if new_metrics:
+                for key in METRIC_KEYS_ORDER:
+                    if key == "firstTxTimestamp": continue
+                    final_metrics[key] += new_metrics.get(key, 0)
+    
         
     # actualizar el contrato (si se proporcionaron las credenciales)
     if owner_address and owner_pk:
