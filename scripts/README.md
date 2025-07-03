@@ -1,31 +1,31 @@
-# Scripts Auxiliares (Para Entornos de Desarrollo)
+# Helper Scripts (For Development Environments)
 
-Estos scripts se encuentran en la carpeta `scripts/` y están diseñados para facilitar la configuración y prueba del entorno en una blockchain local como Hardhat o Ganache.
+These scripts are located in the `scripts/` folder and are designed to help set up and test the environment on a local blockchain like Hardhat or Ganache.
 
 ## `scripts/deploy_contract.py`
 
-Despliega el contrato inteligente `WalletDataCache` en la blockchain. Esto es necesario para que la aplicación principal pueda almacenar y leer los resultados de los análisis.
+Deploys the `WalletDataCache` smart contract to the blockchain. This is necessary so the main application can store and read the analysis results.
 
-### Ejecución:
+### Usage:
 
-1. Abre el archivo y configura los parámetros de conexión (`RPC_URL`, `DEPLOYER_ACCOUNT_INDEX`).
-2. Ejecuta el script desde la terminal:
+1.  Open the file and configure the connection parameters (`RPC_URL`, `DEPLOYER_ACCOUNT_INDEX`).
+2.  Run the script from your terminal:
 
 ```bash
     python scripts/deploy_contract.py
 ```
 
-El script te proporcionará la dirección del nuevo contrato. **Copia esta dirección** y pégala en los parámetros de configuración al ejecutar la app. La dirección también se guarda en un archivo txt generado.
+The script will output the address of the new contract. Copy this address and paste it into the configuration parameters when running the app. The address is also saved to a generated .txt file.
 
-## `scripts/generate_transactions.py`
+## scripts/generate_transactions.py
 
-Crea un gran número de transacciones ETH aleatorias entre las cuentas disponibles en tu nodo.
+Creates a large number of random ETH transactions between the available accounts on your node.
 
-### Ejecución:
+### Usage:
 
-1.  Abre el archivo y ajusta los parámetros según tus necesidades (`TOTAL_TRANSACTIONS`, `ACCOUNTS_TO_USE`, etc.).
-2.  Asegúrate de que tu nodo local esté en ejecución.
-3.  Ejecuta el script desde la terminal:
+1. Open the file and adjust the parameters to fit your needs (TOTAL_TRANSACTIONS, ACCOUNTS_TO_USE, etc.).
+2. Make sure your local node is running.
+3. Run the script from your terminal:
 
 ```bash
     python scripts/generate_transactions.py

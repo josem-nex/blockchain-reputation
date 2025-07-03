@@ -24,10 +24,12 @@ contract WalletDataCache {
     mapping(address => uint256) public lastProcessedBlock;
 
     event WalletDataUpdated(address indexed wallet, uint256 lastBlock);
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
     constructor() {
         owner = msg.sender;
         console.log("WalletDataCache deployed by:", msg.sender);
+        emit OwnershipTransferred(address(0), owner);
     }
 
     modifier onlyOwner() {
@@ -56,5 +58,6 @@ contract WalletDataCache {
     function transferOwnership(address newOwner) external onlyOwner {
         require(newOwner != address(0), "WalletDataCache: New owner is the zero address");
         owner = newOwner;
+        emit OwnershipTransferred(msg.sender, newOwner);
     }
 }
